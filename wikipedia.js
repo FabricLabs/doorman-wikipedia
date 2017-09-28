@@ -1,6 +1,6 @@
 const Wiki = require('wikijs').default;
 
-module.exports = function (Kirbi) {
+module.exports = function (Doorman) {
 	return {
 		commands: [
 			'wiki'
@@ -11,7 +11,7 @@ module.exports = function (Kirbi) {
 			process: (msg, suffix, isEdit, cb) => {
 				const query = suffix;
 				if (!query) {
-					cb(`Usage: ${Kirbi.Config.commandPrefix}wiki search terms`, msg);
+					cb(`Usage: ${Doorman.Config.commandPrefix}wiki search terms`, msg);
 					return;
 				}
 
@@ -24,7 +24,7 @@ module.exports = function (Kirbi) {
 								if (paragraph) {
 									cb({
 										embed: {
-											color: Kirbi.Config.discord.defaultEmbedColor,
+											color: Doorman.Config.discord.defaultEmbedColor,
 											title: page.title,
 											description: `${paragraph}\n\n${page.fullurl}`
 										}
